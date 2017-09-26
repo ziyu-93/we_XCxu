@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="width_70 margin0">
+    <view class="top">
+      <view class="avatar_wrap margin0">
+         <image wx:if="{{!hasUserInfo}}" class="avatar" src="{{head}}"></image>
+         <image wx:else="{{hasUserInfo}}" class="avatar" src="{{userInfo.avatarUrl}}"></image> 
+      </view>
+      <text>{{userInfo.nickName}}</text>
+    </view>
+    <view class="content">
+      <form bindsubmit="formSubmit">
+        <label class="input_box flex">
+          <text class='word'>打赏金额：</text><input name="money" class="money_num" type="number" bindinput="bindChange" value='{{moneyNum}}'/>
+        </label>
+        <view class='prompt'>小伙伴们答对正确答案按名次获得赏金</view>
+        <view class='choose_pay'>
+          <button bindtap='choosePayMoney' data-id="yuer">小程序余额支付<image wx:if="{{choosePay=='yuer'}}" src='../../image/choose.png'></image></button>
+          <button bindtap='choosePayMoney' data-id="weixin">微信支付<image wx:if="{{choosePay!='yuer'}}" src='../../image/choose.png'></image></button>
+        </view>
+        <view class='pay_method'>需支付￥{{fw}}服务费</view>
+        <button class='get_info_first' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button>
+        <button class='begin' formType="submit">{{btn_message}}</button>
+      </form>
+    </view>
+  </view>
+</view>

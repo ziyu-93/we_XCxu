@@ -1,0 +1,49 @@
+{
+  "debug":true,
+  "pages": [
+    "pages/index/index",
+    "pages/index/page/room/room",
+    "pages/index/page/works/works",
+    "pages/rule/rule",
+    "pages/mine/mine"
+  ],
+  "tabBar": {
+    "backgroundColor":"#FFD001",
+    "color":"#000000",
+    "borderStyle":"black",
+    "selectedColor":"#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "邀请好友",
+        "iconPath": "image/friendHide.png",
+        "selectedIconPath": "image/friendShow.png"
+      },
+      {
+        "pagePath": "pages/rule/rule",
+        "text": "游戏规则",
+        "iconPath": "image/ruleHide.png",
+        "selectedIconPath": "image/ruleShow.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "个人中心",
+        "iconPath": "image/mineHide.png",
+        "selectedIconPath": "image/mineShow.png"
+      }]
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#FFD001",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "我画你猜猜",
+    "backgroundColor": "black",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": "false"
+  },
+  "networkTimeout": {
+    "request": 20000,
+    "downloadFile": 20000,
+    "connectSocket":20000,
+    "uploadFile":20000
+  }
+}

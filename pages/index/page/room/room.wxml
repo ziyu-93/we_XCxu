@@ -1,0 +1,196 @@
+<view class="container">
+   <!-- 用户等待页面  -->
+   <view class='user_wrap'  wx:if="{{!show}}">
+    <view class='time'>
+      <view class='{{fangzhuItem.length>1?"show":"hide"}}'>倒计时：<text class='m'>{{time}}</text></view>
+    </view>
+    <view class='user_head_wrap'>
+      <view class='user'>
+        <view class='user_head'>
+          <image class='head' src='{{fangzhuItem[0].headpic}}'></image>
+          <image class='room_boss' src='../../../../image/room_boss.png'></image>
+        </view>
+        <text class='user_name'>{{fangzhuItem[0].client_name}}</text>
+      </view>
+      <view class='user'>
+        <view class='user_head'>
+          <image class='head' src='{{fangzhuItem[1].headpic}}'></image>
+          <image bindtap="go_out"  class='go_out' src="../../../../image/go_out.png" data-name="{{fangzhuItem[1].client_name}}" wx:if="{{fangzhuItem[1].headpic&&fangzhu}}" data-id="{{fangzhuItem[1].client_id}}"></image>
+        </view>
+        <text class='user_name'>{{fangzhuItem[1].client_name}}</text>
+      </view>
+      <view class='user'>
+        <view class='user_head'>
+          <image class='head' src='{{fangzhuItem[2].headpic}}'></image>
+          <image bindtap="go_out" class='go_out' src="../../../../image/go_out.png" wx:if="{{fangzhuItem[2].headpic&&fangzhu}}" data-name="{{fangzhuItem[2].client_name}}" data-id="{{fangzhuItem[2].client_id}}"></image>
+        </view>
+        <text class='user_name'>{{fangzhuItem[2].client_name}}</text>
+      </view>
+      <view class='user'>
+        <view class='user_head'>
+          <image class='head' src='{{fangzhuItem[3].headpic}}'></image>
+          <image bindtap="go_out" class='go_out' src="../../../../image/go_out.png" wx:if="{{fangzhuItem[3].headpic&&fangzhu}}" data-name="{{fangzhuItem[3].client_name}}" data-id="{{fangzhuItem[3].client_id}}"></image>
+        </view>
+        <text class='user_name'>{{fangzhuItem[3].client_name}}</text>
+      </view>
+      <view class='user'>
+        <view class='user_head'>
+          <image class='head' src='{{fangzhuItem[4].headpic}}'></image>
+          <image bindtap="go_out" class='go_out' src="../../../../image/go_out.png" wx:if="{{fangzhuItem[4].headpic&&fangzhu}}" data-name="{{fangzhuItem[4].client_name}}" data-id="{{fangzhuItem[4].client_id}}"></image>
+        </view>
+        <text class='user_name'>{{fangzhuItem[4].client_name}}</text>
+      </view>
+      <view class='user'>
+        <view class='user_head'>
+          <image class='head' src='{{fangzhuItem[5].headpic}}'></image>
+          <image bindtap="go_out" class='go_out' src="../../../../image/go_out.png" wx:if="{{fangzhuItem[5].headpic&&fangzhu}}" data-name="{{fangzhuItem[5].client_name}}" data-id="{{fangzhuItem[5].client_id}}"></image>
+        </view>
+        <text class='user_name'>{{fangzhuItem[5].client_name}}</text>
+      </view>
+    </view>
+    <block wx:if="{{btnShow}}">
+        <view class='user_bt' wx:if="{{fangzhu}}">
+          <button class='out' bindtap="leave_room">解散房间</button>
+          <button wx:if="{{canUse}}" class='share' open-type="share">邀请好友</button>
+          <button class='start' bindtap='goPaint'>开始创作</button>
+        </view>
+        <view class='user_bt other_person' wx:elif="{{!fangzhu}}">
+          <button class='out' bindtap="leave_room">退出房间</button>
+        </view>
+    </block>
+    
+  </view> 
+
+  <!-- 画画页面 -->
+  <view class='paint' wx:elif="{{show}}">
+    <view class='paint_top'>
+      <view class='prompt_wrap'>
+        <view class='paint_time'>
+          时间：<text>{{paintTime+" 秒"}}</text>
+        </view>
+        <view class='prompt' wx:if="{{paintId == currentPhone}}">
+          <text class='tishi'>答案：</text>
+          <view class='tishi_content current_answer'>
+            <text class='first_prompt'>{{current_ques}}</text>
+          </view>
+        </view> 
+        <view class='prompt' wx:else="{{paintId != currentPhone}}">
+            <text class='tishi'>提示：</text>
+           <view class='tishi_content'>
+            <text class='first_prompt'>{{guessText[0]}}</text>
+            <text class='secont_prompt'>{{guessText[1]}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='head_list'>
+        <block wx:for="{{fangzhuItem}}" wx:key="fangzhuItem" wx:for-index="index">
+          <view>
+            <image class="current" wx:if="{{paintId==item.client_id}}" src='../../../../image/current_person.png'></image>
+            <image class='paint_head' src='{{item.headpic}}'></image>
+            <text class="{{fraction[index]>40?'frtion_top':fraction[index]>20?'frtion_ct':''}}">{{fraction[index]}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class='paint_canvas'>
+      <view class="canvas_wrap" bindtap="clickCanvas" wx:if="{{!canvasShow}}">
+       <!--注意：同一页面中的 canvas-id 不可重复，如果使用一个已经出现过的 canvas-id，该 canvas 标签对应的画布将被隐藏并不再正常工作-->
+        <canvas canvas-id="myCanvas" class="myCanvas"
+            id="canvas" 
+            disable-scroll="true"
+            bindtouchstart="touchStart"
+            bindtouchmove="touchMove"
+            bindtouchend="touchEnd"
+            bindtouchcancel="touchEnd"
+            binderror="canvasIdErrorCallback">
+        </canvas>
+      </view>
+      <view class='canvas_wrap' wx:elif="{{canvasShow}}"></view>
+      <view class='paint_wrap'>
+        <view class="font_weight font_msg">
+          <view class='font_border' bindtap="penSelect" data-param="2">
+            <view class='font_1'></view>
+          </view>
+          <view class='font_border' bindtap="penSelect" data-param="6">
+            <view class='font_2'></view>
+          </view>
+          <view class='font_border' bindtap="penSelect" data-param="12">
+          <view class='font_3'></view>
+            </view>
+          <view class='font_border' bindtap="penSelect" data-param="18">
+            <view class='font_4'></view>
+          </view>
+        </view>
+        <view class="font_color font_msg">
+          <view class='color_3' bindtap="colorSelect" data-param="#002AFF" data-color="color_3"></view>
+          <view class='color_2' bindtap="colorSelect" data-color="color_2" data-param="#DF3636"></view>
+          <view class='color_1' bindtap="colorSelect" data-color="color_1" data-param="black"></view>
+          <view class='color_4' bindtap="colorSelect" data-color="color_4" data-param="#00FF06"></view>
+        </view>
+        <view class='font_msg'>
+          <view class='font_clear' bindtap="clearCanvas"><image src='../../../../image/clearPaint.png'></image></view>
+          <view bindtap="cleardraw" class='clear_all'>清屏</view>
+        </view>
+    </view>
+    </view>
+  </view>
+
+
+  <!-- 聊天 -->
+  <scroll-view scroll-y class='speak_wrap' scroll-into-view="{{toView}}" bindscroll="scroll">
+              
+    <!-- 发言循环 -->
+    <block wx:for="{{say}}" wx:key="user_say" wx:for-index="index" id="a{{index}}">
+      <view class='speak' wx:if="{{item.type=='in_room'}}">
+        提示：欢迎<text class='welcome'>{{item.text}}</text>,进入房间
+      </view>
+      <view class='speak' wx:elif="{{item.type=='draw_success'}}" id="a{{index}}">
+        提示：<text>{{item.text}}</text>
+      </view>
+      <view class='speak' id="a{{index}}" wx:else="{{item.type=='say'}}">
+        {{item.name}}：<text>{{item.content}}</text>
+      </view>
+    </block>
+  </scroll-view>
+
+  <form bindsubmit='formSumbit'>
+    <view class='send_text'>
+      <image class='icon'></image>
+      <input name="text" placeholder='请输入文字' value="{{sendMessage}}"></input>
+      <button form-type='submit' class='icon sendMes'>
+        <image src='../../../../image/sendText.png'></image>
+      </button>
+    </view>
+  </form>
+
+  <view class="choose_word_wrap {{xuanciBool?'choose_word_wrap_close':''}}">
+    <view class='choose_word' wx:if="{{paintId==currentPhone}}">
+      <view class='title'>
+        请从下列三组词中选择一组
+      </view>
+      <block wx:for="{{xuanti}}" wx:key="xuanti" wx:for-index="index">
+        <view class='word' bindtap='chooseWord' data-id="{{item.id}}" data-word="{{item.title}}">
+          <text>{{item.title}}</text>
+        </view>
+      </block>
+      <view class='annotate'>
+        倒计时10s后玩家仍然未选取词语，系统将从以上词组中，选取第一组
+      </view>
+      <view class='time_reduce'>
+        倒计时<text>{{second}}</text>s
+      </view>
+    </view>
+    <view class='answer' wx:elif="{{paintId!=currentPhone}}">
+      <text>请等待画者选题</text>
+    </view>
+  </view>
+  
+   <view class="choose_word_wrap {{gameEnd?'answer_show':''}}">
+    <view class='choose_word works_show' wx:if="{{gameOver}}">
+      <view class='next_game'>正确答案：<text class='over_time'>{{answer}}</text></view>
+      <view><image src='{{imageUrl}}'></image></view>
+      <view class='next_game'>本轮结束，距离下一轮开始倒计时<text class='over_time'>{{waitTime}}</text>s</view>
+    </view>
+  </view>
+
+</view>

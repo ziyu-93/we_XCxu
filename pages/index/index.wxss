@@ -1,0 +1,156 @@
+
+.width_70 {
+  background-color: white;
+  padding: 0 72rpx;
+  position: relative;
+  overflow: hidden;
+  margin-top: 100rpx;
+  -webkit-border-radius: 20rpx;
+  -moz-border-radius: 20rpx;
+  border-radius: 20rpx;
+  background: white;
+   -webkit-box-shadow: 3rpx 3rpx 3rpx 3rpx #999,4rpx 4rpx 4rpx 4rpx #fff;
+  -moz-box-shadow: 3rpx 3rpx 3rpx 3rpx #999,4rpx 4rpx 4rpx 4rpx #fff;
+  box-shadow: 3rpx 3rpx 3rpx 3rpx #999,4rpx 4rpx 4rpx 4rpx #fff; 
+}
+
+.top {
+  text-align: center;
+}
+
+.top text {
+  font-size: 44rpx;
+}
+
+.avatar_wrap {
+  width: 200rpx;
+  height: 200rpx;
+  background-color: #666;
+  text-align: center;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  margin: 40rpx auto;
+}
+
+.avatar {
+  height: 200rpx;
+  width: 200rpx;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.content {
+  margin: 50rpx 0;
+}
+
+.input_box {
+  height: 75rpx;
+  font-size: 28rpx;
+  /* margin-bottom: 30rpx; */
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.input_box .word {
+  width: 34%;
+  height: 75rpx;
+  line-height: 75rpx;
+  color: #333;
+}
+
+.money_num {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding-left: 20rpx;
+  border-bottom: 1px solid #000;
+  font-size: 50rpx;
+  color: #000000;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.prompt {
+  font-size: 24rpx;
+  color: #919191;
+  margin-bottom: 35rpx;
+  margin-top: 10rpx;
+}
+.prompt_red {
+  color: red;
+  margin-left: 14rpx;
+}
+
+.choose_pay {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 45rpx;
+}
+
+.choose_pay button {
+  font-size: 28rpx;
+  position: relative;
+}
+
+.choose_pay button image {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.choose_pay button:nth-of-type(1) {
+  background-color: #ffefc3;
+}
+
+.choose_pay button:nth-of-type(2) {
+  background-color: #15C71D;
+  color: white;
+}
+
+.begin {
+  background-color: red;
+  color: white;
+  height: 90rpx;
+  line-height: 90rpx;
+  width:68%;
+  padding: 0;
+  font-size: 32rpx;
+}
+
+.pay_method {
+  color: #919191;
+  font-size: 22rpx;
+  text-align: center;
+  margin-bottom: 12rpx;
+}
+
+.get_info_first{
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  width: 100rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin: 0;
+  font-size: 28rpx;
+  padding: 0;
+  background:red;
+  color:white;
+}

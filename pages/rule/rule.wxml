@@ -1,0 +1,22 @@
+<view class="container rule_page">
+  <!-- <view class='title'>游戏规则</view>
+  <view>1、画画的人选择一个词来画</view>
+  <view>2、其他人根据所画内容，来猜词</view>
+  <view>3、猜中的人越多，画画的人得分就越高，都猜不到不得分</view>
+  <view>4、猜题的人根据次先后获得相应的分数及红包金额</view>
+  <view>5、红包分配按照整局所有玩家的得分情况，本局排名的顺序依次按比例发放红包金额</view>
+  <view class='title'>得分标准</view>
+  <view>1、画者：</view>
+  <view class='text_indent'>画者的作品被其他玩家猜到正确答案得1分，累计猜对次数</view>
+  <view>2、得分判定：</view>
+  <view class='text_indent'>2人局</view>
+  <view class='text_indent_no'>No.1 10分 No.2 1分</view>
+  <view class='text_indent'>3人局</view>
+  <view class='text_indent_no'>No.1 10分 No.2 8分 No.3 1分</view>
+  <view class='text_indent'>4人局</view>
+  <view class='text_indent_no'>No.1 10分 No.2 8分 No.3 6分 No.4 1分</view>
+  <view class='text_indent'>5人局</view>
+  <view class='text_indent_no'>No.1 10分 No.2 8分 No.3 6分 No.4 4分 No.5 1分</view>
+  <view class='text_indent'>6人局</view>
+  <view class='text_indent_no'>No.1 10分 No.2 8分 No.3 6分 No.4 4分 No.5 2分 No.6 1分</view> -->
+</view>

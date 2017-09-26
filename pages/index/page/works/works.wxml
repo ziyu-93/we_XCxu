@@ -1,0 +1,22 @@
+<view class="container">
+  <view class='title'>本局排名</view>
+  <block wx:for="{{personList}}" wx:key="person_list" wx:for-index="index">
+    <view class='rank'>
+    <view class='avatar'>
+      <image class='rank_num' src="{{rankNum[index]}}"></image>
+      <image class='head' src="{{item.headpic}}"></image>
+    </view>
+    <view class='person_msg'>
+      <view class='name'>{{item.nick}}</view>
+      <view class='code_wrap'>得分：<text class='code'>{{item.jifen}}</text>分</view>
+      <view class='money_wrap'>分得红包：<text class='money'>{{item.money}}</text>元</view>
+    </view>
+    <view class='works'>
+      <image src='https://www.fansba.com.cn{{item.draw_img}}'></image>
+    </view>
+  </view>
+  </block>
+  <view class='again_wrap'>
+    <button class='again' bindtap="go_again">开始游戏</button>
+  </view>
+</view>

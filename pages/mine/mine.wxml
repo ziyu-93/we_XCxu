@@ -1,0 +1,63 @@
+<view class="container" id="my">
+  <view wx:if="{{!userInfo}}" class='my userInfo_hide'>请您授权登录</view>
+  <view class='my' wx:else="{{userInfo}}">
+    <view class='my_info'>
+      <view class='my_head'>
+        <image src='{{userInfo.avatarUrl}}'></image>
+      </view>
+      <view class='my_msg'>
+        <view>{{userInfo.nickName}}</view>
+        <view>来自：{{userInfo.city}}</view>
+        <view>积分：<text class='code'>{{myInfo.jifen}}</text>分</view>
+      </view>
+      <view class='msg_right'>
+        <view>称号</view>
+        <view>{{myInfo.chenghu}}</view>
+      </view>
+    </view>
+     <view class='my_money'>
+        <view>账号余额：<text class='money'>{{myInfo.money}}</text>元</view>
+        <button bindtap='moneyWrapShow'>提现</button>
+     </view>
+  </view>
+  <view class='rank'>
+    <view class='rank_title'>游戏排行榜</view>
+  </view>
+  
+  <scroll-view scroll-y class='rank_list'>
+    <block wx:for="{{list}}" wx:key="list_person" wx:for-index="index">
+      <view class='rank_item'>
+        <view class='rank_one'>
+          <image class='rank_num' src="https://www.fansba.com.cn{{item.number}}"></image>
+        </view>
+        <view class='head'><image class='my_head_list' src="{{item.headpic}}"></image></view>
+        <view class='my_msg_list'>
+          <view>{{item.nick}}</view>
+          <view>来自：{{item.city}}</view>
+          <view>积分：<text class='code'>{{item.jifen}}</text>分</view>
+        </view>
+        <view class='msg_right_list'>
+          <view>称号</view>
+          <view class='my_title'>{{item.chenghu}}</view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+
+  <view class='pay_wrap {{show?"pay_wrap_show":""}}'>
+    <view class='pay'>
+      <view class='title'>
+          <text>提现</text>
+      </view>
+
+      <view class='get_money'>
+        <label class='enter'>
+        <text>请输入金额：</text><input type='digit' placeholder='请输入金额' bindinput='inputvalue' value="{{message}}"></input></label>
+        <view class='btn_click'>
+          <button bindtap='pay'>提取</button>
+          <button bindtap='no_pay'>取消</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> 
